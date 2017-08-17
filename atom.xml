@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>WalleZhang&#39;s Blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-08-17T09:09:02.662Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Walle Zhang</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Docker部署MongoDB集群</title>
+    <link href="http://yoursite.com/2017/08/17/how-to-deploy-mongodb-cluster-with-docker/"/>
+    <id>http://yoursite.com/2017/08/17/how-to-deploy-mongodb-cluster-with-docker/</id>
+    <published>2017-08-17T08:51:23.000Z</published>
+    <updated>2017-08-17T09:09:02.662Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;使用Docker部署MongoDB-Cluster&quot;&gt;&lt;a href=&quot;#使用Docker部署MongoDB-Cluster&quot; class=&quot;headerlink&quot; title=&quot;使用Docker部署MongoDB Cluster&quot;&gt;&lt;/a&gt;使用Docker部署MongoDB Cluster&lt;/h1&gt;&lt;h2 id=&quot;环境准备&quot;&gt;&lt;a href=&quot;#环境准备&quot; class=&quot;headerlink&quot; title=&quot;环境准备&quot;&gt;&lt;/a&gt;环境准备&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;四台服务器，分别命名为ServerA、ServerB、ServerC、ServerD&lt;/li&gt;
+&lt;li&gt;2 Shard（1 Primary 1 Secondary 1 Arbiter） Nodes&lt;/li&gt;
+&lt;li&gt;3 Config Nodes&lt;/li&gt;
+&lt;li&gt;4 Router Nodes&lt;/li&gt;
+&lt;li&gt;Docker版本：1.12.5&lt;/li&gt;
+&lt;li&gt;Docker Compose版本：1.9.0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Docker镜像&quot;&gt;&lt;a href=&quot;#Docker镜像&quot; class=&quot;headerlink&quot; title=&quot;Docker镜像&quot;&gt;&lt;/a&gt;Docker镜像&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://store.docker.com/images/9147d1b7-a686-4e38-8ecd-94a47f5da9cf?tab=description&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MongoDB官方镜像&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="MongoDB" scheme="http://yoursite.com/tags/MongoDB/"/>
+    
+      <category term="Docker" scheme="http://yoursite.com/tags/Docker/"/>
+    
+  </entry>
+  
+</feed>
