@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>WalleZhang&#39;s Blog</title>
+  <title>WalleZhang&#39;s BLOG</title>
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://www.zyview.cn/"/>
   <updated>2017-08-17T09:09:02.662Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://www.zyview.cn/</id>
   
   <author>
     <name>Walle Zhang</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>使用Docker部署MongoDB集群</title>
-    <link href="http://yoursite.com/2017/08/17/how-to-deploy-mongodb-cluster-with-docker/"/>
-    <id>http://yoursite.com/2017/08/17/how-to-deploy-mongodb-cluster-with-docker/</id>
+    <link href="http://www.zyview.cn/2017/08/how-to-deploy-mongodb-cluster-with-docker/"/>
+    <id>http://www.zyview.cn/2017/08/how-to-deploy-mongodb-cluster-with-docker/</id>
     <published>2017-08-17T08:51:23.000Z</published>
     <updated>2017-08-17T09:09:02.662Z</updated>
     
@@ -36,12 +36,12 @@
     
     </summary>
     
-      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="http://www.zyview.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-      <category term="MongoDB" scheme="http://yoursite.com/tags/MongoDB/"/>
+      <category term="MongoDB" scheme="http://www.zyview.cn/tags/MongoDB/"/>
     
-      <category term="Docker" scheme="http://yoursite.com/tags/Docker/"/>
+      <category term="Docker" scheme="http://www.zyview.cn/tags/Docker/"/>
     
   </entry>
   
