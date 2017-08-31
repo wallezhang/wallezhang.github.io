@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.zyview.cn/"/>
-  <updated>2017-08-17T09:09:02.662Z</updated>
+  <updated>2017-08-31T07:44:01.809Z</updated>
   <id>http://www.zyview.cn/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何使用GitLab的CI/CD进行持续集成和部署</title>
+    <link href="http://www.zyview.cn/2017/08/how-to-use-gitlab-ci/"/>
+    <id>http://www.zyview.cn/2017/08/how-to-use-gitlab-ci/</id>
+    <published>2017-08-31T07:34:11.000Z</published>
+    <updated>2017-08-31T07:44:01.809Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Gitlab-CI-CD与Docker的简单集成&quot;&gt;&lt;a href=&quot;#Gitlab-CI-CD与Docker的简单集成&quot; class=&quot;headerlink&quot; title=&quot;Gitlab CI/CD与Docker的简单集成&quot;&gt;&lt;/a&gt;Gitlab CI/CD与Docker的简单集成&lt;/h1&gt;&lt;p&gt;Gitlab是使用Ruby On Rails编写的GIT版本控制软件，原生提供了CI/CD的支持。接下来我们看看如何使用CI/CD将项目部署在Docker上。&lt;/p&gt;
+&lt;h2 id=&quot;什么是CI和CD&quot;&gt;&lt;a href=&quot;#什么是CI和CD&quot; class=&quot;headerlink&quot; title=&quot;什么是CI和CD&quot;&gt;&lt;/a&gt;什么是CI和CD&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;CI&lt;/strong&gt;（&lt;a href=&quot;https://en.wikipedia.org/wiki/Continuous_integration&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Continuous Integration&lt;/a&gt;）是一种软件开发的实践，开发人员每次将代码PUSH到仓库中，都会进行一次&lt;strong&gt;构建和测试&lt;/strong&gt;，这样的流程每天会发生很多次。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CD&lt;/strong&gt;（&lt;a href=&quot;https://continuousdelivery.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Continuous Delivery&lt;/a&gt;）是一个软件工程方法论，描述了在软件开发的周期中，尽可能的不需要人工参与的进行持续集成、自动测试和自动部署的能力。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="代码管理" scheme="http://www.zyview.cn/categories/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="GitLab" scheme="http://www.zyview.cn/tags/GitLab/"/>
+    
+      <category term="CI" scheme="http://www.zyview.cn/tags/CI/"/>
+    
+  </entry>
   
   <entry>
     <title>使用Docker部署MongoDB集群</title>

@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java,Python,JVM,Ruby,Linux,Photos,Hexo,NexT" />
+  <meta name="keywords" content="GitLab,CI," />
 
 
 
@@ -96,13 +96,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="WalleZhang&#39;s BLOG">
-<meta property="og:url" content="http://www.zyview.cn/index.html">
+<meta name="description" content="Gitlab CI/CD与Docker的简单集成Gitlab是使用Ruby On Rails编写的GIT版本控制软件，原生提供了CI/CD的支持。接下来我们看看如何使用CI/CD将项目部署在Docker上。 什么是CI和CDCI（Continuous Integration）是一种软件开发的实践，开发人员每次将代码PUSH到仓库中，都会进行一次构建和测试，这样的流程每天会发生很多次。 CD（Con">
+<meta name="keywords" content="GitLab,CI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何使用GitLab的CI&#x2F;CD进行持续集成和部署">
+<meta property="og:url" content="http://www.zyview.cn/2017/08/how-to-use-gitlab-ci/index.html">
 <meta property="og:site_name" content="WalleZhang&#39;s BLOG">
+<meta property="og:description" content="Gitlab CI/CD与Docker的简单集成Gitlab是使用Ruby On Rails编写的GIT版本控制软件，原生提供了CI/CD的支持。接下来我们看看如何使用CI/CD将项目部署在Docker上。 什么是CI和CDCI（Continuous Integration）是一种软件开发的实践，开发人员每次将代码PUSH到仓库中，都会进行一次构建和测试，这样的流程每天会发生很多次。 CD（Con">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-31T07:44:01.809Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WalleZhang&#39;s BLOG">
+<meta name="twitter:title" content="如何使用GitLab的CI&#x2F;CD进行持续集成和部署">
+<meta name="twitter:description" content="Gitlab CI/CD与Docker的简单集成Gitlab是使用Ruby On Rails编写的GIT版本控制软件，原生提供了CI/CD的支持。接下来我们看看如何使用CI/CD将项目部署在Docker上。 什么是CI和CDCI（Continuous Integration）是一种软件开发的实践，开发人员每次将代码PUSH到仓库中，都会进行一次构建和测试，这样的流程每天会发生很多次。 CD（Con">
 
 
 
@@ -131,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zyview.cn/"/>
+  <link rel="canonical" href="http://www.zyview.cn/2017/08/how-to-use-gitlab-ci/"/>
 
 
 
 
 
-  <title>WalleZhang's BLOG</title>
+  <title>如何使用GitLab的CI/CD进行持续集成和部署 | WalleZhang's BLOG</title>
   
 
 
@@ -166,9 +171,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -295,9 +298,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -327,9 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/how-to-use-gitlab-ci/" itemprop="url">如何使用GitLab的CI/CD进行持续集成和部署</a></h1>
+          <h1 class="post-title" itemprop="name headline">如何使用GitLab的CI/CD进行持续集成和部署</h1>
         
 
         <div class="post-meta">
@@ -423,194 +424,231 @@
       
 
       
-        
-          <h1 id="Gitlab-CI-CD与Docker的简单集成"><a href="#Gitlab-CI-CD与Docker的简单集成" class="headerlink" title="Gitlab CI/CD与Docker的简单集成"></a>Gitlab CI/CD与Docker的简单集成</h1><p>Gitlab是使用Ruby On Rails编写的GIT版本控制软件，原生提供了CI/CD的支持。接下来我们看看如何使用CI/CD将项目部署在Docker上。</p>
+        <h1 id="Gitlab-CI-CD与Docker的简单集成"><a href="#Gitlab-CI-CD与Docker的简单集成" class="headerlink" title="Gitlab CI/CD与Docker的简单集成"></a>Gitlab CI/CD与Docker的简单集成</h1><p>Gitlab是使用Ruby On Rails编写的GIT版本控制软件，原生提供了CI/CD的支持。接下来我们看看如何使用CI/CD将项目部署在Docker上。</p>
 <h2 id="什么是CI和CD"><a href="#什么是CI和CD" class="headerlink" title="什么是CI和CD"></a>什么是CI和CD</h2><p><strong>CI</strong>（<a href="https://en.wikipedia.org/wiki/Continuous_integration" target="_blank" rel="external">Continuous Integration</a>）是一种软件开发的实践，开发人员每次将代码PUSH到仓库中，都会进行一次<strong>构建和测试</strong>，这样的流程每天会发生很多次。</p>
 <p><strong>CD</strong>（<a href="https://continuousdelivery.com/" target="_blank" rel="external">Continuous Delivery</a>）是一个软件工程方法论，描述了在软件开发的周期中，尽可能的不需要人工参与的进行持续集成、自动测试和自动部署的能力。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/how-to-use-gitlab-ci/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zyview.cn/2017/08/how-to-deploy-mongodb-cluster-with-docker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Walle Zhang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WalleZhang's BLOG">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/how-to-deploy-mongodb-cluster-with-docker/" itemprop="url">使用Docker部署MongoDB集群</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T16:51:23+08:00">
-                2017-08-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/how-to-deploy-mongodb-cluster-with-docker/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/how-to-deploy-mongodb-cluster-with-docker/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/08/how-to-deploy-mongodb-cluster-with-docker/" class="leancloud_visitors" data-flag-title="使用Docker部署MongoDB集群">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="使用Docker部署MongoDB-Cluster"><a href="#使用Docker部署MongoDB-Cluster" class="headerlink" title="使用Docker部署MongoDB Cluster"></a>使用Docker部署MongoDB Cluster</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ul>
-<li>四台服务器，分别命名为ServerA、ServerB、ServerC、ServerD</li>
-<li>2 Shard（1 Primary 1 Secondary 1 Arbiter） Nodes</li>
-<li>3 Config Nodes</li>
-<li>4 Router Nodes</li>
-<li>Docker版本：1.12.5</li>
-<li>Docker Compose版本：1.9.0</li>
+<a id="more"></a>
+<h2 id="开始集成"><a href="#开始集成" class="headerlink" title="开始集成"></a>开始集成</h2><p>只需要简单的两步即可让项目支持CI/CD：</p>
+<ol>
+<li>在项目根目录中增加<code>.gitlab-ci.yml</code>文件</li>
+<li>配置一个runner</li>
+</ol>
+<h3 id="创建一个-gitlab-ci-yml文件"><a href="#创建一个-gitlab-ci-yml文件" class="headerlink" title="创建一个.gitlab-ci.yml文件"></a>创建一个<code>.gitlab-ci.yml</code>文件</h3><h4 id="什么是-gitlab-ci-yml"><a href="#什么是-gitlab-ci-yml" class="headerlink" title="什么是.gitlab-ci.yml"></a>什么是<code>.gitlab-ci.yml</code></h4><p>在这个文件中，配置了CI/CD过程中都需要做哪些事情，每次PUSH代码到仓库中，GITLAB会首先检索这个文件，然后根据配置选择一个runner，去执行配置的脚本。</p>
+<h4 id="创建一个简单的-gitlab-ci-yml文件"><a href="#创建一个简单的-gitlab-ci-yml文件" class="headerlink" title="创建一个简单的.gitlab-ci.yml文件"></a>创建一个简单的<code>.gitlab-ci.yml</code>文件</h4><blockquote>
+<p><code>.gitlab-ci.yml</code>是一个<a href="https://en.wikipedia.org/wiki/YAML" target="_blank" rel="external">YAML</a>格式的文件</p>
+</blockquote>
+<p>下面是一个简单的示例</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="attr">image:</span> <span class="attr">docker:latest</span></div><div class="line"></div><div class="line"><span class="attr">before_script:</span></div><div class="line"><span class="bullet">   -</span> <span class="string">echo</span> <span class="string">"Before script section"</span></div><div class="line"><span class="bullet">   -</span> <span class="string">echo</span> <span class="string">"For example you might run an update here or install a build dependency"</span></div><div class="line"><span class="bullet">   -</span> <span class="string">echo</span> <span class="string">"Or perhaps you might print out some debugging details"</span></div><div class="line">   </div><div class="line"><span class="attr">after_script:</span></div><div class="line"><span class="bullet">  -</span> <span class="string">echo</span> <span class="string">"After script section"</span></div><div class="line"><span class="bullet">  -</span> <span class="string">echo</span> <span class="string">"For example you might do some cleanup here"</span></div><div class="line">   </div><div class="line"><span class="attr">build1:</span></div><div class="line"><span class="attr"> stage:</span> <span class="string">build</span></div><div class="line"><span class="attr"> only:</span></div><div class="line"><span class="bullet">   -</span> <span class="string">branches</span></div><div class="line"><span class="attr"> script:</span></div><div class="line"><span class="bullet">   -</span> <span class="string">echo</span> <span class="string">"build1 is done."</span></div><div class="line"><span class="attr"> tags:</span></div><div class="line"><span class="bullet">   -</span> <span class="string">tag1</span></div><div class="line"><span class="bullet">   -</span> <span class="string">tag2</span></div><div class="line"></div><div class="line"><span class="attr">test1:</span></div><div class="line"><span class="attr">  stage:</span> <span class="string">test</span></div><div class="line"><span class="attr">  script:</span> </div><div class="line"><span class="bullet">    -</span> <span class="string">echo</span> <span class="string">"Do a test here"</span></div><div class="line"><span class="bullet">    -</span> <span class="string">echo</span> <span class="string">"For example run a test suite"</span></div><div class="line"><span class="attr">  tags:</span></div><div class="line"><span class="bullet">    -</span> <span class="string">tag1</span></div><div class="line"><span class="bullet">    -</span> <span class="string">tag2</span></div><div class="line">   </div><div class="line"><span class="attr">deploy1:</span></div><div class="line"><span class="attr">  stage:</span> <span class="string">deploy</span></div><div class="line"><span class="attr">  script:</span></div><div class="line"><span class="bullet">    -</span> <span class="string">echo</span> <span class="string">"Do your deploy here"</span></div><div class="line"><span class="attr">  tags:</span></div><div class="line"><span class="bullet">    -</span> <span class="string">tag1</span></div><div class="line"><span class="bullet">    -</span> <span class="string">tag2</span></div></pre></td></tr></table></figure>
+<h4 id="将-gitlab-ci-ymlPUSH到仓库中"><a href="#将-gitlab-ci-ymlPUSH到仓库中" class="headerlink" title="将.gitlab-ci.ymlPUSH到仓库中"></a>将<code>.gitlab-ci.yml</code>PUSH到仓库中</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add .gitlab-ci.yml</div><div class="line">git commit -m &quot;Add .gitlab-ci.yml&quot;</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<h3 id="配置一个runner"><a href="#配置一个runner" class="headerlink" title="配置一个runner"></a>配置一个runner</h3><p>本文简单的使用一个docker container来作为runner，安装方式可以参考<a href="https://docs.gitlab.com/runner/install/docker.html" target="_blank" rel="external">官方指南</a></p>
+<h4 id="共享？or专用？"><a href="#共享？or专用？" class="headerlink" title="共享？or专用？"></a>共享？or专用？</h4><p>runner分为共享的和专用的，<strong>共享的runner</strong>可以被所有项目使用，如果项目的配置是允许使用共享的runner，<strong>专用的runner</strong>只能被指定的项目使用。创建不同的runner是根据token来指定的</p>
+<ul>
+<li>创建专用runner：项目Master可以在项目的<code>Settings -&gt; CI/CD Pipelines</code>界面中找到<code>Specific Runners</code>一栏，找到该项目对应的Token和CI的URL</li>
+<li>创建共享runner：管理员可以在<code>Admin -&gt; Runners</code>界面中看到Token</li>
 </ul>
-<h2 id="Docker镜像"><a href="#Docker镜像" class="headerlink" title="Docker镜像"></a>Docker镜像</h2><p><a href="https://store.docker.com/images/9147d1b7-a686-4e38-8ecd-94a47f5da9cf?tab=description" target="_blank" rel="external">MongoDB官方镜像</a></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/how-to-deploy-mongodb-cluster-with-docker/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<p>然后在gitlab-runner的容器中运行以下命令进行注册：<code>sudo gitlab-ci-multi-runner register</code></p>
+<h4 id="runner的executor"><a href="#runner的executor" class="headerlink" title="runner的executor"></a>runner的executor</h4><p>这里套用官方的一个表格</p>
+<table>
+<thead>
+<tr>
+<th>Executor</th>
+<th>Shell</th>
+<th>Docker</th>
+<th>Docker-SSH</th>
+<th>VirtualBox</th>
+<th>Parallels</th>
+<th>SSH</th>
+<th>Kubernetes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>每次构建都使用新环境</td>
+<td>no</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>no</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>迁移runner</td>
+<td>no</td>
+<td>✓</td>
+<td>✓</td>
+<td>部分</td>
+<td>部分</td>
+<td>no</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>0配置支持并发构建</td>
+<td>no (1)</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>no</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>复杂的构建环境</td>
+<td>no (2)</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓ (3)</td>
+<td>✓ (3)</td>
+<td>no</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>调试构建信息</td>
+<td>容易</td>
+<td>中等</td>
+<td>中等</td>
+<td>困难</td>
+<td>困难</td>
+<td>容易</td>
+<td>中等</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>可以支持，但是在大多数场景下，如果构建中使用runner所在机器上安装的服务，则会出现问题。</li>
+<li>需要手工安装所有依赖</li>
+<li>需要安装额外的软件，如使用Vagrant</li>
+</ol>
+<p><strong>本文使用的executor是Docker</strong></p>
+<h3 id="gitlab-ci-yml主要参数详解"><a href="#gitlab-ci-yml主要参数详解" class="headerlink" title=".gitlab-ci.yml主要参数详解"></a><code>.gitlab-ci.yml</code>主要参数详解</h3><h4 id="before-script"><a href="#before-script" class="headerlink" title="before_script"></a>before_script</h4><p>在每个Job执行之前都会执行<code>before_script</code>中定义的命令</p>
+<h4 id="after-script"><a href="#after-script" class="headerlink" title="after_script"></a>after_script</h4><p>在每个Job执行之后都会执行<code>after_script</code>中定义的命令</p>
+<h4 id="stages"><a href="#stages" class="headerlink" title="stages"></a>stages</h4><p>定义Job所使用的阶段，如果不显示的指定，默认的阶段是：<code>build</code>、<code>test</code>、<code>deploy</code>，按照顺序依次执行。</p>
+<p>每个阶段中的Job是并行执行的，当一个阶段的所有JOB都成功执行之后，会顺序的执行下一个阶段中定义的Job。</p>
+<p>如果Job不指定<code>stage</code>参数，默认属于<code>test</code>阶段。</p>
+<h4 id="Jobs"><a href="#Jobs" class="headerlink" title="Jobs"></a>Jobs</h4><p>允许定义无限多个Job，每一个Job必须有一个唯一的名字，不能用关键字参数作为名字。</p>
+<p>Job的参数列表</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>是否必须</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>script</td>
+<td>是</td>
+<td>定义一个用来执行的shell脚本</td>
+</tr>
+<tr>
+<td>image</td>
+<td>否</td>
+<td>使用的docker image</td>
+</tr>
+<tr>
+<td>services</td>
+<td>否</td>
+<td>使用的docker service</td>
+</tr>
+<tr>
+<td>stage</td>
+<td>否</td>
+<td>定义该Job的所属阶段（默认是：<code>test</code>）</td>
+</tr>
+<tr>
+<td>type</td>
+<td>否</td>
+<td><code>stage</code>的别名</td>
+</tr>
+<tr>
+<td>variables</td>
+<td>否</td>
+<td>在Job范围内定义变量</td>
+</tr>
+<tr>
+<td>only</td>
+<td>否</td>
+<td>定义一个用来创建该Job的git refs列表</td>
+</tr>
+<tr>
+<td>except</td>
+<td>否</td>
+<td>定义一个不会创建该Job的git refs列表</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>否</td>
+<td>定义一个用来选择runner的标签列表</td>
+</tr>
+<tr>
+<td>allow_failure</td>
+<td>否</td>
+<td>允许该Job失败，失败的Job不会在提交状态上体现出来</td>
+</tr>
+<tr>
+<td>when</td>
+<td>否</td>
+<td>定义何时会执行该Job，取值范围：<code>on_success</code>，<code>on_failure</code>，<code>always</code>或<code>manual</code></td>
+</tr>
+<tr>
+<td>dependencies</td>
+<td>否</td>
+<td>定义该Job依赖的其它Job，可以在这些Job之间传递artifacts</td>
+</tr>
+<tr>
+<td>artifacts</td>
+<td>否</td>
+<td>定义Job的artifact列表</td>
+</tr>
+<tr>
+<td>cache</td>
+<td>否</td>
+<td>定义在接下来的Job中应该被缓存的文件列表</td>
+</tr>
+<tr>
+<td>before_script</td>
+<td>否</td>
+<td>覆盖全局定义的<code>before_script</code>命令</td>
+</tr>
+<tr>
+<td>after_script</td>
+<td>否</td>
+<td>覆盖全局定义的<code>after_script</code>命令</td>
+</tr>
+<tr>
+<td>environment</td>
+<td>否</td>
+<td>定义当前Job用来完成部署的环境变量名称</td>
+</tr>
+<tr>
+<td>coverage</td>
+<td>否</td>
+<td>定义该Job的代码覆盖设置</td>
+</tr>
+</tbody>
+</table>
+<h5 id="script"><a href="#script" class="headerlink" title="script"></a>script</h5><p>一个被runner执行的shell脚本，可以是单个命令或者命令数组</p>
+<h5 id="only-和-except"><a href="#only-和-except" class="headerlink" title="only 和 except"></a>only 和 except</h5><p><code>only</code>和<code>except</code>是两个用来定义何时需要创建Job的参数：</p>
+<ol>
+<li><code>only</code>定义一组用来创建Job的分支名称或者标签名称</li>
+<li><code>except</code>定义一组不会创建Job的分支名称或者标签名称</li>
+</ol>
+<p>有一些规则来定义refs：</p>
+<ul>
+<li><code>only</code>和<code>except</code>可以同时使用</li>
+<li><code>only</code>和<code>except</code>允许使用正则表达式</li>
+<li><code>only</code>和<code>except</code>允许使用指定的关键字：<code>branches</code>，<code>tags</code>和<code>triggers</code></li>
+<li><code>only</code>和<code>except</code>允许指定一个远程仓库的地址用来过滤fork的Job</li>
+</ul>
+<p>下面这个示例，Job只会在以<code>issue-</code>开头的refs有提交的时候运行</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attr">job:</span></div><div class="line">  <span class="comment"># use regexp</span></div><div class="line"><span class="attr">  only:</span></div><div class="line"><span class="bullet">    -</span> <span class="string">/^issue-.*$/</span></div><div class="line">  <span class="comment"># use special keyword</span></div><div class="line"><span class="attr">  except:</span></div><div class="line"><span class="bullet">    -</span> <span class="string">branches</span></div></pre></td></tr></table></figure>
+<p>下面这个示例，Job只会在被创建tag的分支上运行，或者被API请求触发</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">job:</span></div><div class="line">  <span class="comment"># use special keywords</span></div><div class="line"><span class="attr">  only:</span></div><div class="line"><span class="bullet">    -</span> <span class="string">tags</span></div><div class="line"><span class="bullet">    -</span> <span class="string">triggers</span></div></pre></td></tr></table></figure>
+<h5 id="tags"><a href="#tags" class="headerlink" title="tags"></a>tags</h5><p><code>tags</code>参数用来选择runner，必须全部匹配一个runner的tag。以数组的形式表示。</p>
+<h5 id="allow-failure"><a href="#allow-failure" class="headerlink" title="allow_failure"></a>allow_failure</h5><p>表示允许该Job失败不影响阶段最终的运行的结果。</p>
+<h3 id="查看项目的CI-CD结果"><a href="#查看项目的CI-CD结果" class="headerlink" title="查看项目的CI/CD结果"></a>查看项目的CI/CD结果</h3><p>在项目的<code>Pipelines</code>界面可以看到每一次构建的执行过程和执行结果。</p>
+
       
     </div>
     
@@ -625,14 +663,38 @@
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/GitLab/" rel="tag"># GitLab</a>
+          
+            <a href="/tags/CI/" rel="tag"># CI</a>
+          
+        </div>
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/how-to-deploy-mongodb-cluster-with-docker/" rel="next" title="使用Docker部署MongoDB集群">
+                <i class="fa fa-chevron-left"></i> 使用Docker部署MongoDB集群
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </div>
@@ -642,10 +704,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -653,6 +716,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -673,8 +747,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -743,6 +826,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Gitlab-CI-CD与Docker的简单集成"><span class="nav-number">1.</span> <span class="nav-text">Gitlab CI/CD与Docker的简单集成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是CI和CD"><span class="nav-number">1.1.</span> <span class="nav-text">什么是CI和CD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始集成"><span class="nav-number">1.2.</span> <span class="nav-text">开始集成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个-gitlab-ci-yml文件"><span class="nav-number">1.2.1.</span> <span class="nav-text">创建一个.gitlab-ci.yml文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是-gitlab-ci-yml"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">什么是.gitlab-ci.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个简单的-gitlab-ci-yml文件"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">创建一个简单的.gitlab-ci.yml文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将-gitlab-ci-ymlPUSH到仓库中"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">将.gitlab-ci.ymlPUSH到仓库中</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置一个runner"><span class="nav-number">1.2.2.</span> <span class="nav-text">配置一个runner</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#共享？or专用？"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">共享？or专用？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#runner的executor"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">runner的executor</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gitlab-ci-yml主要参数详解"><span class="nav-number">1.2.3.</span> <span class="nav-text">.gitlab-ci.yml主要参数详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#before-script"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">before_script</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#after-script"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">after_script</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stages"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">stages</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Jobs"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">Jobs</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#script"><span class="nav-number">1.2.3.4.1.</span> <span class="nav-text">script</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#only-和-except"><span class="nav-number">1.2.3.4.2.</span> <span class="nav-text">only 和 except</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tags"><span class="nav-number">1.2.3.4.3.</span> <span class="nav-text">tags</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#allow-failure"><span class="nav-number">1.2.3.4.4.</span> <span class="nav-text">allow_failure</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看项目的CI-CD结果"><span class="nav-number">1.2.4.</span> <span class="nav-text">查看项目的CI/CD结果</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -873,10 +972,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
@@ -894,6 +993,18 @@
       <script id="dsq-count-scr" src="https://wallezhang.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://www.zyview.cn/2017/08/how-to-use-gitlab-ci/';
+          this.page.identifier = '2017/08/how-to-use-gitlab-ci/';
+          this.page.title = '如何使用GitLab的CI/CD进行持续集成和部署';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://wallezhang.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
